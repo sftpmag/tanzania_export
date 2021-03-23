@@ -37,21 +37,20 @@ data_sim={'cotton':df.loc[df.HS4.str.contains('raw cotton'),'Trade Value'].sum()
                                                   'tobacco':df.loc[df.HS4.str.contains('raw tobacco'),'Trade Value'].sum(),\
                                                       'copper':df.loc[df.HS4.str.contains('raw copper'),'Trade Value'].sum(),\
                                                           'manufactured products':manufactured}
-    
-df2=pandas.DataFrame(list(data_sim.items()),columns=['export','value'])
 
-# add simple sector category
+df2=pandas.DataFrame(list(data_sim.items()),columns=['export','value']) # put in dataframe
+
+# add simple sector category: agriculture (ag), manufacturing (ind), petroleum (oil), mineral extraction (min)
 df2['sector']='ag'
 df2.loc[13,'sector']='ind'
 df2.loc[(12,10,9,8,7),'sector']='min'
 df2.loc[6,'sector']='oil'
 
-# percentage
+# add percentage columne and save to csv
 df2['percent']=df2.value/total_export*100
-
 df2.to_csv('export2019.csv')
 
-#%% treemap
+#%% plotting here (treemap)
 sortcolor={'ag':'#BDD09F','min':'#DBCA69','ind':'#4E6172','misc':'#777777','oil':'#855723'}
 
 f,ax=plt.subplots(1,2,figsize=(14,6))
@@ -73,16 +72,3 @@ for i,x in enumerate(files):
     s.set_title(t[i]+' ('+t2[i]+')')
 
 plt.savefig('tanzania_export.jpg')
-
-#%%
-# j=json.load(open('tanzania_boundary.js'))
-# bound=np.array(j['layers'][0]['paths'][0]['points'])
-# x,y=bound[:,0]-min(bound[:,0]),max(bound[:,1])-bound[:,1]
-# f,ax=plt.subplots(figsize=(6,6))
-# plt.plot(x,y,'k-')
-# ax.axis('off')
-
-# plt.savefig('tanzania_boundary.pdf')
-
-
-
