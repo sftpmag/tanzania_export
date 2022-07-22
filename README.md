@@ -1,5 +1,8 @@
 ## tanzania_export
 
+Volume 24, no. 1: "Racial Capitalism"
+https://magazine.scienceforthepeople.org/vol24-1-racial-capitalism/imperialism-and-covid-19-in-tanzania/
+
 source for `oec_tanzania_2019_h92.csv`: 
 [The Observatory of Economic Complexity](https://oec.world/en/visualize/tree_map/hs92/export/tza/all/show/2019/)
 
